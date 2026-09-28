@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Accessories | Premium Mobile Cases & Tech Gear</title>
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .badge-glow { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-20 md:pb-0">
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white text-xs py-2 px-4 text-center font-medium tracking-wide shadow-md">
+    ⚡ PAN-INDIA EXPRESS SHIPPING • COD AVAILABLE • 100% SATISFACTION GUARANTEE
+  </div>
+
+  <!-- 2. Header & Navigation -->
+  <header class="bg-slate-900/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-2">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-black text-xl shadow-lg">
+          D
+        </div>
+        <div>
+          <span class="text-lg md:text-xl font-extrabold tracking-tight text-white block leading-none">DREAM</span>
+          <span class="text-[10px] tracking-widest text-blue-400 font-semibold uppercase">Accessories</span>
+        </div>
+      </a>
+
+      <!-- Desktop Category Filter Links -->
+      <nav class="hidden md:flex space-x-1 text-sm font-medium text-slate-300">
+        <button onclick="filterCategory('all')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition">All Items</button>
+        <button onclick="filterCategory('cases')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition">Premium Cases</button>
+        <button onclick="filterCategory('chargers')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition">Fast Chargers</button>
+        <button onclick="filterCategory('audio')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition">Earphones & Audio</button>
+        <button onclick="filterCategory('protection')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition">Screen Protectors</button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <!-- Admin Access Button -->
+        <button onclick="openAdminModal()" class="flex items-center space-x-1 text-xs bg-slate-800 hover:bg-slate-700 text-blue-400 border border-slate-700 px-3 py-1.5 rounded-lg transition" title="Store Admin Login">
+          <i class="fas fa-lock"></i>
+          <span class="hidden sm:inline">Admin</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCart()" class="relative bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-1.5 rounded-lg text-sm font-semibold flex items-center space-x-2 shadow-lg transition">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="hidden sm:inline">Cart</span>
+          <span id="cartCount" class="bg-white text-blue-600 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 3. Hero Banner -->
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 py-12 px-4 border-b border-slate-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+        ✨ Elevate Your Mobile Style
+      </span>
+      <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+        Next-Level Mobile Accessories & Luxury Cases
+      </h1>
+      <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto mb-8">
+        Engineered for drop protection, sleek aesthetics, and everyday performance. Shipping all across India.
+      </p>
+
+      <!-- Category Filter Pills (Mobile friendly) -->
+      <div class="flex items-center justify-center flex-wrap gap-2 text-xs font-semibold">
+        <button onclick="filterCategory('all')" class="cat-pill active-pill px-4 py-2 rounded-full bg-blue-600 text-white transition">All Items</button>
+        <button onclick="filterCategory('cases')" class="cat-pill px-4 py-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Phone Cases</button>
+        <button onclick="filterCategory('chargers')" class="cat-pill px-4 py-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Fast Chargers & Cables</button>
+        <button onclick="filterCategory('audio')" class="cat-pill px-4 py-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Earphones</button>
+        <button onclick="filterCategory('protection')" class="cat-pill px-4 py-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Screen Guards</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Product Catalog Grid -->
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 id="currentCategoryTitle" class="text-xl md:text-2xl font-bold text-white">All Products</h2>
+        <p class="text-xs text-slate-400">Handpicked premium collection</p>
+      </div>
+      <div class="text-xs text-slate-400">
+        Showing <span id="productCounter" class="text-white font-bold">0</span> items
+      </div>
+    </div>
+
+    <!-- Dynamic Products Container -->
+    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <!-- Products render here via JavaScript -->
+    </div>
+  </main>
+
+  <!-- 5. Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-10 px-4 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">D</div>
+          <span class="text-white font-bold text-base tracking-wide">DREAM ACCESSORIES</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          India's trusted store for shockproof phone cases, fast charging solutions, and daily mobile essentials.
+        </p>
+        <div class="flex space-x-3 text-slate-300 text-lg">
+          <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-green-400"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-3">Customer Support</h4>
+        <p class="mb-1">📍 Deliveries across Pan-India</p>
+        <p class="mb-1">⚡ Standard Delivery: 4 to 6 business days</p>
+        <p class="mb-1">💳 Payment: COD & Online UPI Accepted</p>
+        <p class="mt-2 text-slate-300">WhatsApp Helpdesk: Available 10 AM - 8 PM</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-3">Store Admin</h4>
+        <p class="mb-3 text-slate-400">Store owners can add new phone cases or adjust pricing at any time without coding.</p>
+        <button onclick="openAdminModal()" class="bg-slate-800 hover:bg-slate-700 text-blue-400 border border-slate-700 px-4 py-2 rounded-lg font-medium">
+          <i class="fas fa-lock mr-1.5"></i> Login to Admin Panel
+        </button>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-4 border-t border-slate-800 text-center text-slate-500">
+      &copy; 2026 Dream Accessories. All Rights Reserved. Built with custom architecture.
+    </div>
+  </footer>
+
+  <!-- 6. Mobile Bottom Quick Bar -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 py-2.5 px-6 flex justify-around items-center z-40 text-slate-400 text-xs">
+    <button onclick="filterCategory('all')" class="flex flex-col items-center hover:text-blue-400">
+      <i class="fas fa-home text-base"></i>
+      <span class="text-[10px] mt-1 font-medium">Shop</span>
+    </button>
+    <button onclick="filterCategory('cases')" class="flex flex-col items-center hover:text-blue-400">
+      <i class="fas fa-mobile-alt text-base"></i>
+      <span class="text-[10px] mt-1 font-medium">Cases</span>
+    </button>
+    <button onclick="toggleCart()" class="flex flex-col items-center text-blue-400 relative">
+      <i class="fas fa-shopping-bag text-base"></i>
+      <span class="text-[10px] mt-1 font-medium">Cart</span>
+    </button>
+    <button onclick="openAdminModal()" class="flex flex-col items-center hover:text-blue-400">
+      <i class="fas fa-user-shield text-base"></i>
+      <span class="text-[10px] mt-1 font-medium">Admin</span>
+    </button>
+  </nav>
+
+  <!-- ==================== ADMIN PANEL MODAL ==================== -->
+  <div id="adminModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-shield-halved text-blue-500 text-lg"></i>
+          <h3 class="font-bold text-white text-base">Dream Accessories Admin Portal</h3>
+        </div>
+        <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white text-lg">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 overflow-y-auto">
+        
+        <!-- Login Form (Visible when logged out) -->
+        <div id="adminLoginForm">
+          <p class="text-xs text-slate-400 mb-4">Enter store administrative password to upload items or modify prices.</p>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Admin Password</label>
+            <input type="password" id="adminPasswordInput" placeholder="Enter password (default: dream123)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500" />
+            <p id="loginError" class="text-red-400 text-xs mt-1 hidden">Incorrect password. Please try again.</p>
+          </div>
+          <button onclick="verifyAdminPassword()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg text-sm transition">
+            Login as Admin
+          </button>
+        </div>
+
+        <!-- Authenticated Admin Dashboard (Visible after login) -->
+        <div id="adminDashboard" class="hidden space-y-6">
+          
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <div>
+              <p class="text-xs text-green-400 font-semibold">● Session Active</p>
+              <h4 class="text-sm font-bold text-white">Add New Product to Store</h4>
+            </div>
+            <button onclick="logoutAdmin()" class="text-xs text-red-400 hover:underline">Logout</button>
+          </div>
+
+          <!-- Add Product Form -->
+          <form id="addProductForm" onsubmit="handleProductSubmit(event)" class="space-y-4">
+            
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Product Title / Case Name *</label>
+              <input type="text" id="newTitle" required placeholder="e.g. Matte Frosted Magnetic Case for iPhone 15" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Category *</label>
+                <select id="newCategory" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none">
+                  <option value="cases">Phone Cases</option>
+                  <option value="chargers">Fast Chargers & Cables</option>
+                  <option value="audio">Earphones & Audio</option>
+                  <option value="protection">Screen Protection</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Badge (Optional)</label>
+                <input type="text" id="newBadge" placeholder="e.g. Best Seller / New" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Selling Price (₹) *</label>
+                <input type="number" id="newPrice" required placeholder="499" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Original MRP (₹) *</label>
+                <input type="number" id="newMrp" required placeholder="999" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Product Description *</label>
+              <textarea id="newDescription" rows="2" required placeholder="Shock-absorbent corners, raised camera lip, anti-yellowing matte finish." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none"></textarea>
+            </div>
+
+            <!-- Image Upload OR Direct Image URL -->
+            <div class="border border-slate-800 p-3 rounded-lg bg-slate-950">
+              <label class="block text-xs font-semibold text-slate-200 mb-2">Product Photo</label>
+              <div class="space-y-2">
+                <div>
+                  <label class="block text-[11px] text-slate-400 mb-1">Option A: Upload from your device (Phone / PC)</label>
+                  <input type="file" id="newImageFile" accept="image/*" class="text-xs text-slate-400 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500" />
+                </div>
+                <div class="text-[11px] text-slate-500 text-center">- OR -</div>
+                <div>
+                  <label class="block text-[11px] text-slate-400 mb-1">Option B: Paste Image Web URL</label>
+                  <input type="url" id="newImageUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-blue-500 focus:outline-none" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-lg text-xs shadow-lg transition">
+              Publish Product to Store
+            </button>
+          </form>
+
+          <!-- Current Inventory Manager -->
+          <div class="mt-6 pt-6 border-t border-slate-800">
+            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Live Inventory Management</h4>
+            <div id="adminProductList" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+              <!-- Render product list with delete buttons -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SHOPPING CART DRAWER ==================== -->
+  <div id="cartDrawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+    
+    <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-shopping-bag text-blue-400"></i>
+        <h3 class="font-bold text-white text-base">Your Cart</h3>
+      </div>
+      <button onclick="toggleCart()" class="text-slate-400 hover:text-white">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cartItemsContainer" class="p-4 flex-1 overflow-y-auto space-y-3">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="p-4 border-t border-slate-800 bg-slate-950 space-y-3">
+      <div class="flex justify-between items-center text-sm font-semibold">
+        <span class="text-slate-300">Subtotal</span>
+        <span id="cartSubtotal" class="text-white text-base font-bold">₹0</span>
+      </div>
+      <div class="text-[11px] text-green-400 flex items-center justify-between">
+        <span>Delivery:</span>
+        <span class="font-semibold">FREE (All India)</span>
+      </div>
+
+      <!-- Quick Checkout Form -->
+      <div class="space-y-2 pt-2">
+        <input type="text" id="custName" placeholder="Your Full Name *" class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-white" />
+        <input type="tel" id="custPhone" placeholder="Mobile Number (for delivery confirmation) *" class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-white" />
+        <textarea id="custAddress" rows="2" placeholder="Complete Delivery Address with Pincode *" class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-white"></textarea>
+      </div>
+
+      <button onclick="checkoutViaWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded-lg text-xs flex items-center justify-center space-x-2 shadow-lg transition">
+        <i class="fab fa-whatsapp text-base"></i>
+        <span>Confirm Order via WhatsApp (COD / UPI)</span>
+      </button>
+      <p class="text-[10px] text-slate-500 text-center">Orders are confirmed instantly via our WhatsApp dispatch desk.</p>
+    </div>
+
+  </div>
+
+  <!-- Cart Backdrop Overlay -->
+  <div id="cartOverlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-40 hidden"></div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // -------------------------------------------------------------
+    // CONFIGURATION
+    // -------------------------------------------------------------
+    const STORE_WHATSAPP_NUMBER = "919999999999"; // Change this to your WhatsApp number
+    let ADMIN_PASS = "dream123"; // You can change your admin password here
+
+    // Default Seed Products (Safe, copyright-free mock catalog)
+    const DEFAULT_PRODUCTS = [
+      {
+        id: "prod-1",
+        title: "Matte Frosted MagSafe Case (Impact Armor)",
+        category: "cases",
+        price: 499,
+        mrp: 999,
+        badge: "Bestseller",
+        description: "Translucent frosted back with anti-fingerprint coating and high-strength neodymium magnets.",
+        image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=60"
+      },
+      {
+        id: "prod-2",
+        title: "Liquid Silicone Soft-Touch Case with Camera Guard",
+        category: "cases",
+        price: 399,
+        mrp: 799,
+        badge: "Trending",
+        description: "Ultra-soft micro-fiber lining inside with raised lips around the camera and display.",
+        image: "https://images.unsplash.com/photo-1601593346740-925612772716?w=500&auto=format&fit=crop&q=60"
+      },
+      {
+        id: "prod-3",
+        title: "65W GaN Dual Port Super Fast Type-C Charger",
+        category: "chargers",
+        price: 899,
+        mrp: 1499,
+        badge: "Fast Charge",
+        description: "Compact gallium nitride (GaN) fast charger capable of charging phones, tablets, and laptops.",
+        image: "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=500&auto=format&fit=crop&q=60"
+      },
+      {
+        id: "prod-4",
+        title: "True Wireless Stereo Earbuds with Deep Bass",
+        category: "audio",
+        price: 999,
+        mrp: 2499,
+        badge: "Top Audio",
+        description: "Environmental noise cancellation (ENC), Bluetooth 5.3, and up to 30 hours playback.",
+        image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60"
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // STATE MANAGEMENT (PERSISTED IN LOCALSTORAGE)
+    // -------------------------------------------------------------
+    let products = JSON.parse(localStorage.getItem('dream_products')) || DEFAULT_PRODUCTS;
+    let cart = JSON.parse(localStorage.getItem('dream_cart')) || [];
+    let currentFilter = 'all';
+
+    function saveProducts() {
+      localStorage.setItem('dream_products', JSON.stringify(products));
+      renderProducts();
+      renderAdminInventory();
+    }
+
+    function saveCart() {
+      localStorage.setItem('dream_cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    // -------------------------------------------------------------
+    // RENDER PRODUCTS
+    // -------------------------------------------------------------
+    function renderProducts() {
+      const container = document.getElementById('productGrid');
+      container.innerHTML = '';
+
+      const filtered = currentFilter === 'all' 
+        ? products 
+        : products.filter(p => p.category === currentFilter);
+
+      document.getElementById('productCounter').innerText = filtered.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500">
+            <i class="fas fa-box-open text-4xl mb-2"></i>
+            <p class="text-sm">No items found in this collection.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const discount = Math.round(((p.mrp - p.price) / p.mrp) * 100);
+        const card = document.createElement('div');
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex flex-col group hover:border-slate-700 transition shadow-sm hover:shadow-xl";
+        
+        card.innerHTML = `
+          <div class="relative bg-slate-950 aspect-square overflow-hidden flex items-center justify-center">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/400x400/0f172a/38bdf8?text=Dream+Accessories'" />
+            ${p.badge ? `<span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">${p.badge}</span>` : ''}
+            <span class="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-1.5 py-0.5 rounded">-${discount}%</span>
+          </div>
+          <div class="p-3.5 flex flex-col flex-1 justify-between">
+            <div>
+              <p class="text-[10px] uppercase font-bold tracking-wider text-blue-400">${p.category}</p>
+              <h3 class="text-xs md:text-sm font-bold text-white line-clamp-2 mt-0.5 mb-1">${p.title}</h3>
+              <p class="text-slate-400 text-[11px] line-clamp-2 mb-3">${p.description}</p>
+            </div>
+            <div>
+              <div class="flex items-baseline space-x-2 mb-3">
+                <span class="text-sm md:text-base font-extrabold text-white">₹${p.price}</span>
+                <span class="text-xs text-slate-500 line-through">₹${p.mrp}</span>
+              </div>
+              <button onclick="addToCart('${p.id}')" class="w-full bg-slate-800 hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded-lg transition flex items-center justify-center space-x-1.5">
+                <i class="fas fa-cart-plus"></i>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterCategory(cat) {
+      currentFilter = cat;
+      const titles = {
+        all: "All Products",
+        cases: "Premium Phone Cases",
+        chargers: "Fast Chargers & Cables",
+        audio: "Earphones & Audio Gear",
+        protection: "Screen Protectors"
+      };
+      document.getElementById('currentCategoryTitle').innerText = titles[cat] || "All Products";
+
+      // Update pill classes
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      event?.target?.classList?.remove('bg-slate-800', 'text-slate-300');
+      event?.target?.classList?.add('bg-blue-600', 'text-white');
+
+      renderProducts();
+    }
+
+    // -------------------------------------------------------------
+    // CART OPERATIONS
+    // -------------------------------------------------------------
+    function addToCart(id) {
+      const prod = products.find(p => p.id === id);
+      if (!prod) return;
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...prod, qty: 1 });
+      }
+      saveCart();
+      toggleCart(true); // open drawer
+    }
+
+    function updateQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      saveCart();
+    }
+
+    function toggleCart(forceOpen = false) {
+      const drawer = document.getElementById('cartDrawer');
+      const overlay = document.getElementById('cartOverlay');
+      if (forceOpen || drawer.classList.contains('translate-x-full')) {
+        drawer.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        drawer.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cartCount');
+      const container = document.getElementById('cartItemsContainer');
+      const subtotalEl = document.getElementById('cartSubtotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      countEl.innerText = totalItems;
+
+      let subtotal = 0;
+      container.innerHTML = '';
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="h-64 flex flex-col items-center justify-center text-slate-500">
+            <i class="fas fa-shopping-cart text-3xl mb-2"></i>
+            <p class="text-xs">Your cart is currently empty.</p>
+          </div>
+        `;
+        subtotalEl.innerText = "₹0";
+        return;
+      }
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        const row = document.createElement('div');
+        row.className = "flex items-center space-x-3 bg-slate-950 p-2.5 rounded-lg border border-slate-800";
+        row.innerHTML = `
+          <img src="${item.image}" class="w-12 h-12 rounded object-cover" />
+          <div class="flex-1 min-w-0">
+            <h5 class="text-xs font-semibold text-white truncate">${item.title}</h5>
+            <p class="text-[11px] text-blue-400">₹${item.price} each</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="updateQty('${item.id}', -1)" class="w-6 h-6 bg-slate-800 text-slate-200 rounded flex items-center justify-center text-xs hover:bg-slate-700">-</button>
+            <span class="text-xs font-bold text-white w-4 text-center">${item.qty}</span>
+            <button onclick="updateQty('${item.id}', 1)" class="w-6 h-6 bg-slate-800 text-slate-200 rounded flex items-center justify-center text-xs hover:bg-slate-700">+</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      subtotalEl.innerText = `₹${subtotal}`;
+    }
+
+    // -------------------------------------------------------------
+    // WHATSAPP CHECKOUT GENERATOR (NO BACKEND REQUIRED)
+    // -------------------------------------------------------------
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+
+      if (!name || !phone || !address) {
+        alert("Please enter your Name, Phone Number, and Complete Delivery Address.");
+        return;
+      }
+
+      let subtotal = 0;
+      let orderList = "";
+      cart.forEach((i, idx) => {
+        const cost = i.price * i.qty;
+        subtotal += cost;
+        orderList += `${idx + 1}. ${i.title} (Qty: ${i.qty}) - ₹${cost}%0A`;
+      });
+
+      const message = `🛍️ *NEW ORDER - DREAM ACCESSORIES*%0A%0A` +
+        `*Customer Details:*%0A` +
+        `👤 Name: ${name}%0A` +
+        `📞 Phone: ${phone}%0A` +
+        `🏠 Address: ${address}%0A%0A` +
+        `*Items Ordered:*%0A${orderList}%0A` +
+        `💰 *Total Amount:* ₹${subtotal}%0A` +
+        `🚚 *Shipping:* FREE Pan-India%0A%0A` +
+        `Please confirm my order and share dispatch details!`;
+
+      const whatsappURL = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${message}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    // -------------------------------------------------------------
+    // ADMIN PANEL OPERATIONS (Direct Store Editing)
+    // -------------------------------------------------------------
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.remove('hidden');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.add('hidden');
+    }
+
+    function verifyAdminPassword() {
+      const entered = document.getElementById('adminPasswordInput').value;
+      if (entered === ADMIN_PASS) {
+        document.getElementById('adminLoginForm').classList.add('hidden');
+        document.getElementById('adminDashboard').classList.remove('hidden');
+        document.getElementById('loginError').classList.add('hidden');
+        renderAdminInventory();
+      } else {
+        document.getElementById('loginError').classList.remove('hidden');
+      }
+    }
+
+    function logoutAdmin() {
+      document.getElementById('adminLoginForm').classList.remove('hidden');
+      document.getElementById('adminDashboard').classList.add('hidden');
+      document.getElementById('adminPasswordInput').value = '';
+    }
+
+    function renderAdminInventory() {
+      const container = document.getElementById('adminProductList');
+      container.innerHTML = '';
+      products.forEach(p => {
+        const row = document.createElement('div');
+        row.className = "flex items-center justify-between bg-slate-950 p-2.5 rounded border border-slate-800 text-xs";
+        row.innerHTML = `
+          <div class="flex items-center space-x-2 truncate pr-2">
+            <img src="${p.image}" class="w-8 h-8 rounded object-cover" />
+            <span class="font-medium text-slate-200 truncate">${p.title} - ₹${p.price}</span>
+          </div>
+          <button onclick="deleteProduct('${p.id}')" class="text-rose-400 hover:text-rose-300 font-bold text-xs px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20">
+            Delete
+          </button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function deleteProduct(id) {
+      if (confirm("Are you sure you want to remove this product from your website?")) {
+        products = products.filter(p => p.id !== id);
+        saveProducts();
+      }
+    }
+
+    function handleProductSubmit(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('newTitle').value.trim();
+      const category = document.getElementById('newCategory').value;
+      const badge = document.getElementById('newBadge').value.trim();
+      const price = parseInt(document.getElementById('newPrice').value);
+      const mrp = parseInt(document.getElementById('newMrp').value);
+      const description = document.getElementById('newDescription').value.trim();
+      const fileInput = document.getElementById('newImageFile');
+      const urlInput = document.getElementById('newImageUrl').value.trim();
+
+      const publish = (imageUrl) => {
+        const newProd = {
+          id: "prod-" + Date.now(),
+          title,
+          category,
+          price,
+          mrp,
+          badge,
+          description,
+          image: imageUrl || "https://placehold.co/400x400/0f172a/38bdf8?text=Dream+Accessories"
+        };
+
+        products.unshift(newProd); // Add to top of list
+        saveProducts();
+
+        // Reset Form
+        document.getElementById('addProductForm').reset();
+        alert("Product published successfully! It is now live in your store.");
+      };
+
+      // Check if user uploaded a file from their device
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          publish(evt.target.result); // Base64 encoded local image
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else if (urlInput) {
+        publish(urlInput);
+      } else {
+        publish(""); // fallback placeholder
+      }
+    }
+
+    // Initialize on page load
+    renderProducts();
+    updateCartUI();
+  </script>
+</body>
+</html>
